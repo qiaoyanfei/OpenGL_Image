@@ -14,5 +14,5 @@ build
 
 signing.properties
 CMakeLists.txt
-src/main/obj
+app/src/main/obj/
 src/main/libs
