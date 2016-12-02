@@ -114,9 +114,12 @@ public abstract class BaseFragment extends Fragment implements GLSurfaceView.Ren
         final int[] texNames = {0};
         glGenTextures(1, texNames, 0);
         glBindTexture(GL_TEXTURE_2D, texNames[0]);
+
+
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
+        //对纹理坐标进行截取，所有大于1.0的值都设置为1.0,所有小于0.0的值都设置为0.0
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
@@ -170,11 +173,12 @@ public abstract class BaseFragment extends Fragment implements GLSurfaceView.Ren
     @Override
     public void onDrawFrame(GL10 gl) {
 
-        // Draw background color
+        //绘制白色背景
         glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        //启用背景混合模式
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
